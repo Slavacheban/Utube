@@ -1,4 +1,4 @@
-package homework12;
+package HW12;
 
 import java.util.ArrayList;
 import java.util.List;
