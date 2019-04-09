@@ -26,7 +26,7 @@ public class Authorization {
 
     public static Credential authorize(List<String> scopes, String credentialDatastore) throws IOException {
 
-        Reader clientSecretReader = new InputStreamReader(Authorization.class.getResourceAsStream("/client_secrets.json.json"));
+        Reader clientSecretReader = new InputStreamReader(Authorization.class.getResourceAsStream("/client_secrets.json"));
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, clientSecretReader);
 
         FileDataStoreFactory fileDataStoreFactory =

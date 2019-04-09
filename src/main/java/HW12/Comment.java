@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Comment {
-    private String nameAutor;
+    private String nameAuthor;
     private String textComment;
     private Long likes;
     private DateTime dateOfLastModification;

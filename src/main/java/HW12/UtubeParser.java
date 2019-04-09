@@ -35,7 +35,7 @@ public class UtubeParser {
             for (CommentThread videoComment : videoComments) {
                 Comment comment = new Comment();
                 snippet = videoComment.getSnippet().getTopLevelComment().getSnippet();
-                comment.setNameAutor(snippet.getAuthorDisplayName());
+                comment.setNameAuthor(snippet.getAuthorDisplayName());
                 comment.setTextComment(snippet.getTextDisplay());
                 comment.setLikes(snippet.getLikeCount());
                 comment.setDateOfLastModification(snippet.getPublishedAt());
