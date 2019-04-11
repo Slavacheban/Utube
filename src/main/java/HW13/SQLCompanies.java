@@ -28,7 +28,7 @@ public class SQLCompanies {
             preparedStatement.setInt(1, id);
             resultSet = preparedStatement.executeQuery();
             resultSet.next();
-            company.setID(resultSet.getInt(1)).setCompany_name(resultSet.getString(2)).setCountry(resultSet.getString(3));
+            company.setId(resultSet.getInt(1)).setCompany_name(resultSet.getString(2)).setCountry(resultSet.getString(3));
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
         } finally {
@@ -90,7 +90,7 @@ public class SQLCompanies {
         try (Connection connection = MySQLConnection.createConnection()) {
             connection.setAutoCommit(false);
             preparedStatement = connection.prepareStatement(UPDATE);
-            preparedStatement.setInt(1, company.getID());
+            preparedStatement.setInt(1, company.getId());
             preparedStatement.setString(2, company.getCompany_name());
             preparedStatement.setString(3, company.getCountry());
             preparedStatement.executeUpdate();

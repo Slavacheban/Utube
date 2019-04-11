@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
 @Setter
 @Accessors(chain = true)
 public class Developer {
-    private int ID;
+    private int id;
     private String name;
     private String city;
     private int age;

@@ -27,7 +27,7 @@ public class SQLDevelopers {
             preparedStatement.setInt(1, id);
             resultSet = preparedStatement.executeQuery();
             resultSet.next();
-            developer.setID(resultSet.getInt(1)).setName(resultSet.getString(2))
+            developer.setId(resultSet.getInt(1)).setName(resultSet.getString(2))
                     .setCity(resultSet.getString(3))
                     .setAge(resultSet.getInt(4))
                     .setSalary(resultSet.getInt(5));
@@ -97,7 +97,7 @@ public class SQLDevelopers {
         try (Connection connection = MySQLConnection.createConnection()) {
             connection.setAutoCommit(false);
             preparedStatement = connection.prepareStatement(UPDATE);
-            preparedStatement.setInt(1, developer.getID());
+            preparedStatement.setInt(1, developer.getId());
             preparedStatement.setString(2, developer.getName());
             preparedStatement.setString(3, developer.getCity());
             preparedStatement.setInt(4, developer.getAge());

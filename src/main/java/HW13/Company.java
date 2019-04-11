@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
 @Setter
 @Accessors(chain = true)
 public class Company {
-    private int ID;
+    private int id;
     private String company_name;
     private String country;
 }

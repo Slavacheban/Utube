@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 @Setter
 @Accessors(chain = true)
 public class Skill {
-    private int ID;
+    private int id;
     private String area;
     private String skill;
 }
