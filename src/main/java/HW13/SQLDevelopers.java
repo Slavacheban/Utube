@@ -2,6 +2,7 @@ package HW13;
 
 import org.apache.log4j.Logger;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +19,7 @@ public class SQLDevelopers {
     private static final String UPDATE = "UPDATE developers SET name = ?, city = ?, age = ?, salary = ? WHERE id = ?";
     private static final String DELETE = "DELETE FROM developers WHERE id = ?";
 
-    public Developer selectId(int id) throws SQLException {
+    public Developer selectId(int id) throws SQLException, IOException {
         ResultSet resultSet = null;
         Developer developer = new Developer();
         try (Connection connection = MySQLConnection.createConnection();
@@ -38,7 +39,7 @@ public class SQLDevelopers {
         return developer;
     }
 
-    public List<Developer> selectAll() throws SQLException {
+    public List<Developer> selectAll() throws SQLException, IOException {
         ResultSet resultSet = null;
         List<Developer> list = new ArrayList<>();
         try (Connection connection = MySQLConnection.createConnection();
@@ -58,7 +59,7 @@ public class SQLDevelopers {
         return list;
     }
 
-    public void deleteById(int id) throws SQLException {
+    public void deleteById(int id) throws SQLException, IOException {
         PreparedStatement preparedStatement = null;
         try (Connection connection = MySQLConnection.createConnection()) {
             connection.setAutoCommit(false);
@@ -73,7 +74,7 @@ public class SQLDevelopers {
         }
     }
 
-    public void insert(Developer developer) throws SQLException {
+    public void insert(Developer developer) throws SQLException, IOException {
         PreparedStatement preparedStatement = null;
         try (Connection connection = MySQLConnection.createConnection()) {
             connection.setAutoCommit(false);
@@ -91,7 +92,7 @@ public class SQLDevelopers {
         }
     }
 
-    public void update(Developer developer) throws SQLException {
+    public void update(Developer developer) throws SQLException, IOException {
         PreparedStatement preparedStatement = null;
         try (Connection connection = MySQLConnection.createConnection()) {
             connection.setAutoCommit(false);

@@ -2,40 +2,10 @@ CREATE DATABASE new_schema;
 USE new_schema;
 
 CREATE table developers (ID int NOT NULL PRIMARY KEY auto_increment, Name varchar(255) NOT NULL, City varchar(255) NOT NULL, Age int);
-INSERT INTO developers (Name, City, Age) VALUES ('Slava', 'Odessa', 24);
-INSERT INTO developers (Name, City, Age) VALUES ('Vasya', 'Odessa', 33);
-INSERT INTO developers (Name, City, Age) VALUES ('Petya', 'Kyev', 22);
-INSERT INTO developers (Name, City, Age) VALUES ('Alex', 'Lviv', 30);
-INSERT INTO developers (Name, City, Age) VALUES ('Ivan', 'Lviv', 26);
-INSERT INTO developers (Name, City, Age) VALUES ('Lesya', 'Kyev', 25);
-
 CREATE table skills (ID int NOT NULL PRIMARY KEY auto_increment, Area varchar(255) NOT NULL, Skill varchar(255) NOT NULL);
-INSERT INTO skills(Area, Skill) VALUES('Java', 'Junior');
-INSERT INTO skills(Area, Skill) VALUES('C++', 'Middle');
-INSERT INTO skills(Area, Skill) VALUES('Java', 'Senior');
-INSERT INTO skills(Area, Skill) VALUES('.NET', 'Junior');
-INSERT INTO skills(Area, Skill) VALUES('Python', 'Middle');
-INSERT INTO skills(Area, Skill) VALUES('Java', 'Senior');
-
 CREATE table projects (ID int NOT NULL PRIMARY KEY auto_increment, Project varchar(255) NOT NULL, area varchar(255));
-INSERT INTO projects(Project, area) VALUES('Bank_Provider', 'Finance');
-INSERT INTO projects(Project, area) VALUES('Hotel', 'business');
-INSERT INTO projects(Project, area) VALUES('Book_analitics', 'knowledge');
-INSERT INTO projects(Project, area) VALUES('Auto', 'roads');
-INSERT INTO projects(Project, area) VALUES('Robot', 'IT');
-INSERT INTO projects(Project, area) VALUES('Hoover', 'IT');
-
 CREATE table companies (ID int NOT NULL PRIMARY KEY auto_increment, company_name varchar(255) NOT NULL, country varchar(255));
-INSERT INTO companies(company_name, country) VALUES('IBM', 'USA');
-INSERT INTO companies(company_name, country) VALUES('FaceBook', 'USA');
-INSERT INTO companies(company_name, country) VALUES('Yandex', 'Russia');
-INSERT INTO companies(company_name, country) VALUES('Google', 'USA');
-
 CREATE table customers (ID int NOT NULL PRIMARY KEY auto_increment, customer_name varchar(255) NOT NULL, budget int);
-INSERT INTO customers(customer_name, budget) VALUES('Bil Gates', 100);
-INSERT INTO customers(customer_name, budget) VALUES('CRU', 200);
-INSERT INTO customers(customer_name, budget) VALUES('NASA', 300);
-INSERT INTO customers(customer_name, budget) VALUES('Министерство энергетики', 400);
 
 CREATE TABLE new_schema.dev_project (
   id_developer INT NOT NULL,
@@ -53,16 +23,6 @@ CREATE TABLE new_schema.dev_project (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-INSERT INTO new_schema.dev_project (id_developer, id_project) VALUES (1, 2);
-INSERT INTO new_schema.dev_project (id_developer, id_project) VALUES (2, 5);
-INSERT INTO new_schema.dev_project (id_developer, id_project) VALUES (3, 2);
-INSERT INTO new_schema.dev_project (id_developer, id_project) VALUES (3, 3);
-INSERT INTO new_schema.dev_project (id_developer, id_project) VALUES (4, 5);
-INSERT INTO new_schema.dev_project (id_developer, id_project) VALUES (4, 1);
-INSERT INTO new_schema.dev_project (id_developer, id_project) VALUES (5, 1);
-INSERT INTO new_schema.dev_project (id_developer, id_project) VALUES (5, 2);
-INSERT INTO new_schema.dev_project (id_developer, id_project) VALUES (6, 5);
-
 CREATE TABLE new_schema.developer_skills (
   id_developer INT NOT NULL,
   id_skill INT NOT NULL,
@@ -78,19 +38,6 @@ CREATE TABLE new_schema.developer_skills (
     REFERENCES new_schema.skills (ID)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
-
-INSERT INTO new_schema.developer_skills (id_developer, id_skill) VALUES (1, 1);
-INSERT INTO new_schema.developer_skills (id_developer, id_skill) VALUES (1, 2);
-INSERT INTO new_schema.developer_skills (id_developer, id_skill) VALUES (1, 3);
-INSERT INTO new_schema.developer_skills (id_developer, id_skill) VALUES (2, 2);
-INSERT INTO new_schema.developer_skills (id_developer, id_skill) VALUES (2, 3);
-INSERT INTO new_schema.developer_skills (id_developer, id_skill) VALUES (3, 4);
-INSERT INTO new_schema.developer_skills (id_developer, id_skill) VALUES (4, 1);
-INSERT INTO new_schema.developer_skills (id_developer, id_skill) VALUES (4, 5);
-INSERT INTO new_schema.developer_skills (id_developer, id_skill) VALUES (5, 2);
-INSERT INTO new_schema.developer_skills (id_developer, id_skill) VALUES (6, 6);
-
-
 
 CREATE TABLE new_schema.company_project (
   id_company INT NOT NULL,
@@ -108,11 +55,6 @@ CREATE TABLE new_schema.company_project (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-INSERT INTO new_schema.company_project (id_company, id_project) VALUES (1, 1);
-INSERT INTO new_schema.company_project (id_company, id_project) VALUES (2, 2);
-INSERT INTO new_schema.company_project (id_company, id_project) VALUES (3, 3);
-INSERT INTO new_schema.company_project (id_company, id_project) VALUES (4, 4);
-
 CREATE TABLE new_schema.customer_project (
   id_customer INT NOT NULL,
   id_project INT NOT NULL,
@@ -129,6 +71,63 @@ CREATE TABLE new_schema.customer_project (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+INSERT INTO developers (Name, City, Age) VALUES ('Slava', 'Odessa', 24);
+INSERT INTO developers (Name, City, Age) VALUES ('Vasya', 'Odessa', 33);
+INSERT INTO developers (Name, City, Age) VALUES ('Petya', 'Kyev', 22);
+INSERT INTO developers (Name, City, Age) VALUES ('Alex', 'Lviv', 30);
+INSERT INTO developers (Name, City, Age) VALUES ('Ivan', 'Lviv', 26);
+INSERT INTO developers (Name, City, Age) VALUES ('Lesya', 'Kyev', 25);
+
+INSERT INTO skills(Area, Skill) VALUES('Java', 'Junior');
+INSERT INTO skills(Area, Skill) VALUES('C++', 'Middle');
+INSERT INTO skills(Area, Skill) VALUES('Java', 'Senior');
+INSERT INTO skills(Area, Skill) VALUES('.NET', 'Junior');
+INSERT INTO skills(Area, Skill) VALUES('Python', 'Middle');
+INSERT INTO skills(Area, Skill) VALUES('Java', 'Senior');
+
+INSERT INTO projects(Project, area) VALUES('Bank_Provider', 'Finance');
+INSERT INTO projects(Project, area) VALUES('Hotel', 'business');
+INSERT INTO projects(Project, area) VALUES('Book_analitics', 'knowledge');
+INSERT INTO projects(Project, area) VALUES('Auto', 'roads');
+INSERT INTO projects(Project, area) VALUES('Robot', 'IT');
+INSERT INTO projects(Project, area) VALUES('Hoover', 'IT');
+
+INSERT INTO companies(company_name, country) VALUES('IBM', 'USA');
+INSERT INTO companies(company_name, country) VALUES('FaceBook', 'USA');
+INSERT INTO companies(company_name, country) VALUES('Yandex', 'Russia');
+INSERT INTO companies(company_name, country) VALUES('Google', 'USA');
+
+INSERT INTO customers(customer_name, budget) VALUES('Bil Gates', 100);
+INSERT INTO customers(customer_name, budget) VALUES('CRU', 200);
+INSERT INTO customers(customer_name, budget) VALUES('NASA', 300);
+INSERT INTO customers(customer_name, budget) VALUES('Министерство энергетики', 400);
+
+INSERT INTO new_schema.dev_project (id_developer, id_project) VALUES (1, 2);
+INSERT INTO new_schema.dev_project (id_developer, id_project) VALUES (2, 5);
+INSERT INTO new_schema.dev_project (id_developer, id_project) VALUES (3, 2);
+INSERT INTO new_schema.dev_project (id_developer, id_project) VALUES (3, 3);
+INSERT INTO new_schema.dev_project (id_developer, id_project) VALUES (4, 5);
+INSERT INTO new_schema.dev_project (id_developer, id_project) VALUES (4, 1);
+INSERT INTO new_schema.dev_project (id_developer, id_project) VALUES (5, 1);
+INSERT INTO new_schema.dev_project (id_developer, id_project) VALUES (5, 2);
+INSERT INTO new_schema.dev_project (id_developer, id_project) VALUES (6, 5);
+
+INSERT INTO new_schema.developer_skills (id_developer, id_skill) VALUES (1, 1);
+INSERT INTO new_schema.developer_skills (id_developer, id_skill) VALUES (1, 2);
+INSERT INTO new_schema.developer_skills (id_developer, id_skill) VALUES (1, 3);
+INSERT INTO new_schema.developer_skills (id_developer, id_skill) VALUES (2, 2);
+INSERT INTO new_schema.developer_skills (id_developer, id_skill) VALUES (2, 3);
+INSERT INTO new_schema.developer_skills (id_developer, id_skill) VALUES (3, 4);
+INSERT INTO new_schema.developer_skills (id_developer, id_skill) VALUES (4, 1);
+INSERT INTO new_schema.developer_skills (id_developer, id_skill) VALUES (4, 5);
+INSERT INTO new_schema.developer_skills (id_developer, id_skill) VALUES (5, 2);
+INSERT INTO new_schema.developer_skills (id_developer, id_skill) VALUES (6, 6);
+
+INSERT INTO new_schema.company_project (id_company, id_project) VALUES (1, 1);
+INSERT INTO new_schema.company_project (id_company, id_project) VALUES (2, 2);
+INSERT INTO new_schema.company_project (id_company, id_project) VALUES (3, 3);
+INSERT INTO new_schema.company_project (id_company, id_project) VALUES (4, 4);
+
 INSERT INTO new_schema.customer_project (id_customer, id_project) VALUES (1, 1);
 INSERT INTO new_schema.customer_project (id_customer, id_project) VALUES (2, 2);
 INSERT INTO new_schema.customer_project (id_customer, id_project) VALUES (3, 3);
@@ -142,7 +141,6 @@ UPDATE new_schema.developers SET salary = 450 WHERE (ID = 3);
 UPDATE new_schema.developers SET salary = 300 WHERE (ID = 4);
 UPDATE new_schema.developers SET salary = 550 WHERE (ID = 5);
 UPDATE new_schema.developers SET salary = 400 WHERE (ID = 6);
-
 
 SELECT SUM(developers.salary), projects.Project  FROM dev_project
 INNER JOIN projects ON dev_project.id_project = projects.ID

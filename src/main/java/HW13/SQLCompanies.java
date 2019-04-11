@@ -3,6 +3,7 @@ package HW13;
 
 import org.apache.log4j.Logger;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +20,7 @@ public class SQLCompanies {
     private static final String UPDATE = "UPDATE companies SET company_name = ?, country = ? WHERE id = ?";
     private static final String DELETE = "DELETE FROM companies WHERE id = ?";
 
-    public Company selectId(int id) throws SQLException {
+    public Company selectId(int id) throws SQLException, IOException {
         ResultSet resultSet = null;
         Company company = new Company();
         try (Connection connection = MySQLConnection.createConnection();
@@ -36,7 +37,7 @@ public class SQLCompanies {
         return company;
     }
 
-    public List<Company> selectAll() throws SQLException {
+    public List<Company> selectAll() throws SQLException, IOException {
         ResultSet resultSet = null;
         List<Company> list = new ArrayList<>();
         try (Connection connection = MySQLConnection.createConnection();
@@ -53,7 +54,7 @@ public class SQLCompanies {
         return list;
     }
 
-    public void deleteById(int id) throws SQLException {
+    public void deleteById(int id) throws SQLException, IOException {
         PreparedStatement preparedStatement = null;
         try (Connection connection = MySQLConnection.createConnection()) {
             connection.setAutoCommit(false);
@@ -68,7 +69,7 @@ public class SQLCompanies {
         }
     }
 
-    public void insert(Company company) throws SQLException {
+    public void insert(Company company) throws SQLException, IOException {
         PreparedStatement preparedStatement = null;
         try (Connection connection = MySQLConnection.createConnection()) {
             connection.setAutoCommit(false);
@@ -84,7 +85,7 @@ public class SQLCompanies {
         }
     }
 
-    public void update(Company company) throws SQLException {
+    public void update(Company company) throws SQLException, IOException {
         PreparedStatement preparedStatement = null;
         try (Connection connection = MySQLConnection.createConnection()) {
             connection.setAutoCommit(false);
