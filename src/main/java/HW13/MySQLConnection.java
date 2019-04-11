@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-public class MySQLConnection {
+public final class MySQLConnection {
     private static Properties properties = new Properties();
     private static final Logger LOGGER = Logger.getLogger(MySQLConnection.class);
 
@@ -19,5 +19,8 @@ public class MySQLConnection {
         Connection connection = DriverManager.getConnection(properties.getProperty("URL"), properties.getProperty("USERNAME"), properties.getProperty("PASSWORD"));
         LOGGER.info("connection was created");
         return connection;
+    }
+
+    private MySQLConnection() {
     }
 }
