@@ -16,11 +16,11 @@ public class SQLCompanies {
     private static final Logger LOGGER = Logger.getLogger(SQLCompanies.class);
     private static final String SELECT_ID = "SELECT * FROM companies WHERE id = ?";
     private static final String SELECT_ALL = "SELECT * FROM companies";
-    private static final String INSERT = "INSERT INTO companies(company_name, country) VALUES(?, ?)";
-    private static final String UPDATE = "UPDATE companies SET company_name = ?, country = ? WHERE id = ?";
+    private static final String INSERT = "INSERT INTO companies(companyName, country) VALUES(?, ?)";
+    private static final String UPDATE = "UPDATE companies SET companyName = ?, country = ? WHERE id = ?";
     private static final String DELETE = "DELETE FROM companies WHERE id = ?";
 
-    public Company selectId(int id) throws SQLException, IOException {
+    public Company selectById(int id) throws SQLException, IOException {
         ResultSet resultSet = null;
         Company company = new Company();
         try (Connection connection = MySQLConnection.createConnection();
@@ -28,7 +28,9 @@ public class SQLCompanies {
             preparedStatement.setInt(1, id);
             resultSet = preparedStatement.executeQuery();
             resultSet.next();
-            company.setId(resultSet.getInt(1)).setCompany_name(resultSet.getString(2)).setCountry(resultSet.getString(3));
+            company.setId(resultSet.getInt(1))
+                    .setCompanyName(resultSet.getString(2))
+                    .setCountry(resultSet.getString(3));
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
         } finally {
@@ -44,7 +46,8 @@ public class SQLCompanies {
              Statement statement = connection.createStatement()) {
             resultSet = statement.executeQuery(SELECT_ALL);
             while (resultSet.next()) {
-                list.add(new Company().setCompany_name(resultSet.getString(2)).setCountry(resultSet.getString(3)));
+                list.add(new Company().setCompanyName(resultSet.getString(2))
+                        .setCountry(resultSet.getString(3)));
             }
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
@@ -74,7 +77,7 @@ public class SQLCompanies {
         try (Connection connection = MySQLConnection.createConnection()) {
             connection.setAutoCommit(false);
             preparedStatement = connection.prepareStatement(INSERT);
-            preparedStatement.setString(2, company.getCompany_name());
+            preparedStatement.setString(2, company.getCompanyName());
             preparedStatement.setString(3, company.getCountry());
             preparedStatement.executeUpdate();
             connection.commit();
@@ -91,7 +94,7 @@ public class SQLCompanies {
             connection.setAutoCommit(false);
             preparedStatement = connection.prepareStatement(UPDATE);
             preparedStatement.setInt(1, company.getId());
-            preparedStatement.setString(2, company.getCompany_name());
+            preparedStatement.setString(2, company.getCompanyName());
             preparedStatement.setString(3, company.getCountry());
             preparedStatement.executeUpdate();
             connection.commit();

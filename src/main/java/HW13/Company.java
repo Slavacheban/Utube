@@ -13,6 +13,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class Company {
     private int id;
-    private String company_name;
+    private String companyName;
     private String country;
 }

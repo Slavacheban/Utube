@@ -19,7 +19,7 @@ public class SQLDevelopers {
     private static final String UPDATE = "UPDATE developers SET name = ?, city = ?, age = ?, salary = ? WHERE id = ?";
     private static final String DELETE = "DELETE FROM developers WHERE id = ?";
 
-    public Developer selectId(int id) throws SQLException, IOException {
+    public Developer selectById(int id) throws SQLException, IOException {
         ResultSet resultSet = null;
         Developer developer = new Developer();
         try (Connection connection = MySQLConnection.createConnection();
